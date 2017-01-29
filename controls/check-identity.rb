@@ -1,3 +1,5 @@
+# All checks from http://docs.openstack.org/security-guide/identity/checklist.html
+
 keystone_conf_dir = '/etc/keystone'
 keystone_conf_file = "#{keystone_conf_dir}/keystone.conf"
 
