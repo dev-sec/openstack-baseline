@@ -1,11 +1,10 @@
-name        : chef/openstack-security-guide
+name        : trumant/openstack-security-guide
 title       : OpenStack Security Guide Compliance Profile
-maintainer  : Chef Software, Inc.
-copyright   : Chef Software, Inc.
-copyright_email: support@chef.io
+maintainer  : Travis Truman
+copyright   : JJ Asghar, Christoph Hartmann, Travis Truman
 license     : Apache 2.0 License
-summary     : Verifies the guideline of OpenStack Security Guide
+summary     : Verifies the guidelines of OpenStack Security Guide
 description :
-version     : 0.1.0
+version     : 0.2.0
 supports    :
  - linux
