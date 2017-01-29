@@ -1,16 +1,32 @@
 # InSpec Security Guide
 
-This is a collection of [InSpec]() scripts to help check against the [OpenStack Security Guide](http://docs.openstack.org/security-guide/).
+This is a collection of [InSpec](http://inspec.io) scripts to check compliance against the [OpenStack Security Guide](http://docs.openstack.org/security-guide/).
 
+## Installation
 
-To run these tests you can use:
-
-```bash
+```shell
 git clone git@github.com:chef-partners/inspec-openstack-security.git
+cd inspec-openstack-security
+bundle install
+```
 
-# run test locally
-inspec exec inspec-openstack-security
+## Run tests locally
 
-# run test on remote host on SSH
-inspec exec inspec-openstack-security -t ssh://user@hostname
+```shell
+bundle exec inspec exec .
+```
+
+## Run tests against remote host
+
+```shell
+bundle exec inspec exec . -t ssh://user@hostname
+```
+
+## Run only the identity controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-identity-01 check-identity-02 \
+    check-identity-03 check-identity-04 \
+    check-identity-05 check-identity-06
 ```
