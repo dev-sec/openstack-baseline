@@ -108,7 +108,7 @@ end
 
 control 'check-identity-03' do
 
-  title 'Strict permissions should be set for all Keystone config files.'
+  title 'Keystone API should support TLS.'
 
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-03-is-tls-enabled-for-identity'
 
