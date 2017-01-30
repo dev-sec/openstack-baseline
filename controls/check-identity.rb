@@ -127,12 +127,14 @@ control 'check-identity-04' do
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-04-does-identity-use-strong-hashing-algorithms-for-pki-tokens'
 
   keystone_conf = ini(keystone_conf_file)
-  if keystone_conf.value(['token','provider']) == 'pki'
-    describe ini(keystone_conf_file) do
-      its(['token','hash_algorithm']) { should eq('sha256').or eq('sha384').or eq('sha512') }
-    end
+
+  only_if do
+    keystone_conf.value(['token','provider']) == 'pki'
   end
 
+  describe ini(keystone_conf_file) do
+    its(['token','hash_algorithm']) { should eq('sha256').or eq('sha384').or eq('sha512') }
+  end
 end
 
 control 'check-identity-05' do
