@@ -1,6 +1,10 @@
-# InSpec Security Guide
+# InSpec Compliance for the OpenStack Security Guide
 
 This is a collection of [InSpec](http://inspec.io) scripts to check compliance against the [OpenStack Security Guide](http://docs.openstack.org/security-guide/).
+
+The control checklists for Keystone, Horizon, Cinder, Nova and Neutron are implemented based on OpenStack Mitaka and beyond configuration standards.
+
+Some control implementation exists for Swift and Manila, but has not been tested.
 
 ## Installation
 
@@ -30,3 +34,12 @@ bundle exec inspec exec . \
     check-identity-03 check-identity-04 \
     check-identity-05 check-identity-06
 ```
+
+# To Do
+
+https://github.com/trumant/inspec-openstack-security/issues
+
+# License
+
+Apache 2
+
