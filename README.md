@@ -37,7 +37,7 @@ bundle exec inspec exec . \
 
 # To Do
 
-https://github.com/trumant/inspec-openstack-security/issues
+https://github.com/chef-partners/inspec-openstack-security/issues
 
 # License
 

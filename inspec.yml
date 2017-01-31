@@ -1,6 +1,6 @@
-name        : trumant/openstack-security-guide
+name        : chef-partners/openstack-security-guide
 title       : OpenStack Security Guide Compliance Profile
-maintainer  : Travis Truman
+maintainer  : JJ Asghar, Travis Truman
 copyright   : JJ Asghar, Christoph Hartmann, Travis Truman
 license     : Apache 2.0 License
 summary     : Verifies the guidelines of OpenStack Security Guide
