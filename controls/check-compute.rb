@@ -66,7 +66,6 @@ control 'check-compute-04' do
   ref 'http://docs.openstack.org/security-guide/compute/checklist.html#check-compute-04-is-secure-protocol-used-for-authentication'
 
   describe ini(nova_conf_file) do
-    # We test the value of auth_uri, rather than auth_protocol or identity_uri as the doc in ref is currently out of date
     its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
 
     # nil is acceptable as false is the default value
