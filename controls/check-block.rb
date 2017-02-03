@@ -69,7 +69,6 @@ control 'check-block-04' do
   ref 'http://docs.openstack.org/security-guide/block-storage/checklist.html#check-block-04-is-tls-enabled-for-authentication'
 
   describe ini(cinder_conf_file) do
-    # We test the value of auth_uri, rather than auth_protocol or identity_uri as the doc in ref is currently out of date
     its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
 
     # nil is acceptable as false is the default value
