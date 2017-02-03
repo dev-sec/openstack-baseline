@@ -27,11 +27,3 @@ end
 describe file('/etc/cinder/cinder.conf') do
     its('content') { should match "glance_host ='https" }
 end
-
-# cookies
-describe file('/etc/openstack-dashboard/local_settings.py') do
-  its('content') { should match "SESSION_COOKIE_HTTPONLY = True" }
-  its('content') { should match "CSRF_COOKIE_SECURE = True" }
-  its('content') { should match "SESSION_COOKIE_SECURE = True" }
-  it { should exist }
-end
