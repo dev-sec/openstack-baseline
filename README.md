@@ -20,19 +20,67 @@ bundle install
 bundle exec inspec exec .
 ```
 
-## Run tests against remote host
+## Run tests against remote host(s)
+
+Note that the controls can only be run against a single host until
+https://github.com/chef/inspec/issues/268 is closed.
+
+If your OpenStack control plane consists of multiple hosts, you'll need to
+run InSpec against each host separately.
 
 ```shell
 bundle exec inspec exec . -t ssh://user@hostname
 ```
 
-## Run only the identity controls
+## Run controls for a particular service
+
+### Identity controls
 
 ```shell
 bundle exec inspec exec . \
   --controls check-identity-01 check-identity-02 \
     check-identity-03 check-identity-04 \
     check-identity-05 check-identity-06
+```
+
+### Dashboard controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-dashboard-01 check-dashboard-02 \
+    check-dashboard-03 check-dashboard-04 \
+    check-dashboard-05 check-dashboard-06 \
+    check-dashboard-07 check-dashboard-08 \
+    check-dashboard-09 check-dashboard-10 \
+    check-dashboard-11
+```
+
+### Block Storage controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-block-01 check-block-02 \
+    check-block-03 check-block-04 \
+    check-block-05 check-block-06 \
+    check-block-07 check-block-08
+```
+
+### Compute controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-compute-01 check-compute-02 \
+    check-compute-03 check-compute-04 \
+    check-compute-05
+```
+
+### Network controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-neutron-01 check-neutron-02 \
+    check-neutron-03 check-neutron-04 \
+    check-neutron-05
 ```
 
 # To Do
