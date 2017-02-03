@@ -68,7 +68,7 @@ control 'check-identity-02' do
     its('mode') { should cmp '0640' }
   end
 
-  describe file("#{keystone_conf_dir}/keystone-paste") do
+  describe file("#{keystone_conf_dir}/keystone-paste.ini") do
     its('mode') { should cmp '0640' }
   end
 
