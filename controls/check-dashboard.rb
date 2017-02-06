@@ -116,17 +116,6 @@ control 'check-dashboard-08' do
   end
 end
 
-control 'check-dashboard-08' do
-
-  title "Horizon reveal password should be disabled."
-
-  ref 'http://docs.openstack.org/security-guide/dashboard/checklist.html#check-dashboard-08-is-disable-password-reveal-set-to-true'
-
-  describe file("#{horizon_config_dir}/local_settings.py") do
-    its('content') { should match /^HORIZON_CONFIG\["disable_password_reveal"\] = True$/ }
-  end
-end
-
 control 'check-dashboard-09' do
 
   title "Horizon should require admin password for password changes."
