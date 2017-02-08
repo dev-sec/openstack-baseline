@@ -6,6 +6,8 @@ The control checklists for Keystone, Horizon, Cinder, Nova and Neutron are imple
 
 Some control implementation exists for Swift and Manila, but has not been tested.
 
+Beta-level controls exist for Glance. These controls are inspired by those currently recommended in the OpenStack Security Guide for Cinder.
+
 ## Installation
 
 ```shell
@@ -81,6 +83,14 @@ bundle exec inspec exec . \
   --controls check-neutron-01 check-neutron-02 \
     check-neutron-03 check-neutron-04 \
     check-neutron-05
+```
+
+### Image controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-image-01 check-image-02 \
+    check-image-03 check-image-04
 ```
 
 # To Do
