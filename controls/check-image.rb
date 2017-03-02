@@ -3,7 +3,7 @@
 
 glance_conf_dir = '/etc/glance'
 
-config_files = %w(
+default_config_files = %w(
   glance-api-paste.ini
   glance-api.conf
   glance-cache.conf
@@ -16,6 +16,8 @@ config_files = %w(
   schema-image.json
   schema.json
 )
+
+config_files = attribute('glance_config_files', default: default_config_files, description: 'OpenStack Glance configuration files')
 
 control 'check-image-01' do
 
