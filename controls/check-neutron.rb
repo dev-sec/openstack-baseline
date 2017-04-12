@@ -69,7 +69,10 @@ control 'check-neutron-05' do
   title 'Neutron API server should support TLS.'
   ref 'http://docs.openstack.org/security-guide/networking/checklist.html#check-neutron-05-is-tls-enabled-on-neutron-api-server'
 
-  describe ssl(port: 9696) do
-    it { should be_enabled }
+  # TODO: workaround until https://github.com/chef/inspec/issues/1205 is fixed
+  unless os.name.nil? # detect mock backend during inspec check
+    describe ssl(port: 9696) do
+      it { should be_enabled }
+    end
   end
 end

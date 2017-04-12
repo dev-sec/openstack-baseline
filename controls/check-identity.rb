@@ -97,15 +97,19 @@ control 'check-identity-02' do
   end
 end
 
+puts os.params
+
 control 'check-identity-03' do
   title 'Keystone API should support TLS.'
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-03-is-tls-enabled-for-identity'
-
   [5000, 35357].each do |port|
+    # TODO: workaround until https://github.com/chef/inspec/issues/1205 is fixed
+    next if os.name.nil? # detect mock backend during inspec check
     describe ssl(port: port) do
       it { should be_enabled }
     end
   end
+
 end
 
 control 'check-identity-04' do
