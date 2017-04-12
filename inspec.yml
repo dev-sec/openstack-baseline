@@ -1,10 +1,10 @@
-name        : chef-partners/openstack-security-guide
-title       : OpenStack Security Guide Compliance Profile
+name        : openstack-baseline
+title       : DevSec OpenStack Security Benchmark
 maintainer  : JJ Asghar, Travis Truman
 copyright   : JJ Asghar, Christoph Hartmann, Travis Truman
 license     : Apache 2.0 License
 summary     : Verifies the guidelines of OpenStack Security Guide
 description :
-version     : 0.2.0
+version     : 0.3.0
 supports    :
- - linux
+ - os-family: linux
