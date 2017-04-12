@@ -1,3 +1,4 @@
+# encoding: utf-8
 # All checks here are not (yet) in the OpenStack Security Guide
 # They are inspired by those at http://docs.openstack.org/security-guide/block-storage/checklist.html
 
@@ -10,15 +11,18 @@ default_config_files = %w(
 )
 
 config_files = attribute(
-    'aodh_config_files', default: default_config_files,
-    description: 'OpenStack AODH configuration files')
+  'aodh_config_files',
+  default: default_config_files,
+  description: 'OpenStack AODH configuration files'
+)
 
 aodh_enabled = attribute(
-    'aodh_enabled', default: false,
-    description: 'OpenStack Inspec checks for AODH should be enabled')
+  'aodh_enabled',
+  default: false,
+  description: 'OpenStack Inspec checks for AODH should be enabled'
+)
 
 control 'check-telemetry-alarming-01' do
-
   title 'AODH config files should be owned by root user and aodh group.'
   only_if { aodh_enabled }
 
@@ -31,9 +35,8 @@ control 'check-telemetry-alarming-01' do
 end
 
 control 'check-telemetry-alarming-02' do
-
   title 'Strict permissions should be set for all AODH config files.'
-  only_if { aodh_enabled}
+  only_if { aodh_enabled }
 
   config_files.each do |conf_file|
     describe file("#{conf_dir}/#{conf_file}") do
@@ -43,14 +46,12 @@ control 'check-telemetry-alarming-02' do
 end
 
 control 'check-telemetry-alarming-03' do
-
   title 'AODH should communicate with Keystone using TLS.'
   only_if { aodh_enabled }
 
   describe ini("#{conf_dir}/aodh.conf") do
-    its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
-
+    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken','insecure']) { should be_nil.or eq "False" }
+    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
   end
 end
