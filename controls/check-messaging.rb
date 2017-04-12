@@ -92,13 +92,13 @@ control 'check-messaging-03' do
   desc 'Check if the correct ca and server certificate implemented and server key. The rabbitmq server should also check the client certificates.'
   ref 'Rabbitmq Security', url: 'https://docs.openstack.org/security-guide/messaging/security.html'
 
-  describe rabbitmq_config.params('rabbit','ssl_options','cacertfile') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'cacertfile') do
     it { should cmp TLSCACERT }
   end
-  describe rabbitmq_config.params('rabbit','ssl_options','certfile') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'certfile') do
     it { should cmp TLSCERT }
   end
-  describe rabbitmq_config.params('rabbit','ssl_options','keyfile') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'keyfile') do
     it { should cmp TLSKEY }
   end
 end
@@ -108,10 +108,10 @@ control 'check-messaging-04' do
   desc 'Rabbitmq should verify the certificates from the clients and if the server does not receive a valid certificate it should not allow the connection from the client.'
   ref 'Rabbitmq Security', url: 'https://docs.openstack.org/security-guide/messaging/security.html'
 
-  describe rabbitmq_config.params('rabbit','ssl_options','verify') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'verify') do
     it { should cmp 'verify_peer' }
   end
-  describe rabbitmq_config.params('rabbit','ssl_options','fail_if_no_peer_cert') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'fail_if_no_peer_cert') do
     it { should cmp 'true' }
   end
 end
@@ -121,10 +121,10 @@ control 'check-messaging-05' do
   desc 'Rabbitmq should only use TLSv1.2.'
   ref 'Rabbitmq Security', url: 'https://docs.openstack.org/security-guide/messaging/security.html'
 
-  describe rabbitmq_config.params('ssl','versions') do
+  describe rabbitmq_config.params('ssl', 'versions') do
     it { should cmp 'tlsv1.2' }
   end
-  describe rabbitmq_config.params('rabbit','ssl_options','versions') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'versions') do
     it { should cmp 'tlsv1.2' }
   end
 end
@@ -135,8 +135,8 @@ control 'check-messaging-06' do
   ref 'BSI recommendation', url: 'https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Publikationen/TechnischeRichtlinien/TR02102/BSI-TR-02102-2.pdf;jsessionid=30F658ACD2A772B0A2430C4DEC4AF7D1.1_cid341?__blob=publicationFile&v=4'
   ref 'Mozilla recommendation', url: 'https://wiki.mozilla.org/Security/Server_Side_TLS#Modern_compatibility'
 
-  describe rabbitmq_config.params('rabbit','ssl_options','ciphers') do
-    it { should eq [["ecdhe_ecdsa", "aes_256_gcm", "null", "sha384"], ["ecdhe_rsa", "aes_256_gcm", "null", "sha384"], ["ecdhe_ecdsa", "aes_128_gcm", "null", "sha256"], ["ecdhe_rsa", "aes_128_gcm", "null", "sha256"]] }
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'ciphers') do
+    it { should eq [['ecdhe_ecdsa', 'aes_256_gcm', 'null', 'sha384'], ['ecdhe_rsa', 'aes_256_gcm', 'null', 'sha384'], ['ecdhe_ecdsa', 'aes_128_gcm', 'null', 'sha256'], ['ecdhe_rsa', 'aes_128_gcm', 'null', 'sha256']] }
   end
 end
 
@@ -145,7 +145,7 @@ control 'check-messaging-07' do
   desc 'The rabbitmq server should force the tls cipher order'
   ref 'Strong Ciphers for Apache, nginx and Lighttpd', url: 'https://cipherli.st/'
 
-  describe rabbitmq_config.params('rabbit','ssl_options','honor_cipher_order') do
+  describe rabbitmq_config.params('rabbit', 'ssl_options', 'honor_cipher_order') do
     it { should eq true }
   end
 end
