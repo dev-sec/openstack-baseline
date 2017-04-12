@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # check-shared-01
 describe file('/etc/manila/manila.conf') do
   it { should be_owned_by 'root' }
@@ -18,25 +20,25 @@ end
 
 # check-shared-02
 describe file('/etc/manila/manila.conf') do
-  its('mode') { should eq 0640 }
+  its('mode') { should eq 0o640 }
   it { should exist }
 end
 describe file('/etc/manila/api-paste.ini') do
-  its('mode') { should eq 0640 }
+  its('mode') { should eq 0o640 }
   it { should exist }
 end
 describe file('/etc/manila/policy.json') do
-  its('mode') { should eq 0640 }
+  its('mode') { should eq 0o640 }
   it { should exist }
 end
 describe file('/etc/manila/rootwrap.conf') do
-  its('mode') { should eq 0640 }
+  its('mode') { should eq 0o640 }
   it { should exist }
 end
 
 # check-shared-03
 describe file('/etc/manila/manila.conf') do
-    its('content') { should match "auth_strategy = keystone" }
+  its('content') { should match 'auth_strategy = keystone' }
 end
 
 # check-shared-04

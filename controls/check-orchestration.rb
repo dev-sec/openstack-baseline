@@ -1,3 +1,4 @@
+# encoding: utf-8
 # All checks here are not (yet) in the OpenStack Security Guide
 # They are inspired by those at http://docs.openstack.org/security-guide/block-storage/checklist.html
 
@@ -10,11 +11,19 @@ default_config_files = %w(
   heat_api_audit_map.conf
 )
 
-config_files = attribute('heat_config_files', default: default_config_files, description: 'OpenStack Heat configuration files')
-heat_enabled = attribute('heat_enabled', default: false, description: 'OpenStack Inspec checks for Heat should be enabled')
+config_files = attribute(
+  'heat_config_files',
+  default: default_config_files,
+  description: 'OpenStack Heat configuration files'
+)
+
+heat_enabled = attribute(
+  'heat_enabled',
+  default: false,
+  description: 'OpenStack Inspec checks for Heat should be enabled'
+)
 
 control 'check-orchestration-01' do
-
   title 'Heat config files should be owned by root user and heat group.'
   only_if { heat_enabled }
 
@@ -27,7 +36,6 @@ control 'check-orchestration-01' do
 end
 
 control 'check-orchestration-02' do
-
   title 'Strict permissions should be set for all Heat config files.'
   only_if { heat_enabled }
 
@@ -39,14 +47,12 @@ control 'check-orchestration-02' do
 end
 
 control 'check-orchestration-03' do
-
   title 'Heat should communicate with Keystone using TLS.'
   only_if { heat_enabled }
 
   describe ini("#{heat_conf_dir}/heat.conf") do
-    its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
-
+    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken','insecure']) { should be_nil.or eq "False" }
+    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
   end
 end

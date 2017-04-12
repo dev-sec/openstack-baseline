@@ -1,3 +1,4 @@
+# encoding: utf-8
 # All checks here are not (yet) in the OpenStack Security Guide
 # They are inspired by those at http://docs.openstack.org/security-guide/block-storage/checklist.html
 
@@ -17,12 +18,14 @@ default_config_files = %w(
   schema.json
 )
 
-config_files = attribute('glance_config_files', default: default_config_files, description: 'OpenStack Glance configuration files')
+config_files = attribute(
+  'glance_config_files',
+  default: default_config_files,
+  description: 'OpenStack Glance configuration files'
+)
 
 control 'check-image-01' do
-
   title 'Glance config files should be owned by root user and glance group.'
-
   config_files.each do |glance_conf_file|
     describe file("#{glance_conf_dir}/#{glance_conf_file}") do
       it { should be_owned_by 'root' }
@@ -32,9 +35,7 @@ control 'check-image-01' do
 end
 
 control 'check-image-02' do
-
   title 'Strict permissions should be set for all Glance config files.'
-
   config_files.each do |glance_conf_file|
     describe file("#{glance_conf_dir}/#{glance_conf_file}") do
       its('mode') { should cmp '0640' }
@@ -43,34 +44,29 @@ control 'check-image-02' do
 end
 
 control 'check-image-03' do
-
   title 'Glance should use Keystone for authentication.'
 
   # nil is acceptable as keystone is default value
   describe ini("#{glance_conf_dir}/glance-api.conf") do
-    its(['DEFAULT','auth_strategy']) { should be_nil.or eq "keystone" }
+    its(['DEFAULT', 'auth_strategy']) { should be_nil.or eq 'keystone' }
   end
-
   describe ini("#{glance_conf_dir}/glance-registry.conf") do
-    its(['DEFAULT','auth_strategy']) { should be_nil.or eq "keystone" }
+    its(['DEFAULT', 'auth_strategy']) { should be_nil.or eq 'keystone' }
   end
 end
 
 control 'check-image-04' do
-
   title 'Glance should communicate with Keystone using TLS.'
 
   describe ini("#{glance_conf_dir}/glance-api.conf") do
-    its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
-
+    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken','insecure']) { should be_nil.or eq "False" }
+    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
   end
 
   describe ini("#{glance_conf_dir}/glance-registry.conf") do
-    its(['keystone_authtoken','auth_uri']) { should match /^https:/ }
-
+    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken','insecure']) { should be_nil.or eq "False" }
+    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
   end
 end
