@@ -143,6 +143,7 @@ end
 control 'check-messaging-07' do
   title 'Check for tls cipher honor order'
   desc 'The rabbitmq server should force the tls cipher order'
+  ref 'Strong Ciphers for Apache, nginx and Lighttpd', url: 'https://cipherli.st/'
 
   describe rabbitmq_config.params('rabbit','ssl_options','honor_cipher_order') do
     it { should eq true }
