@@ -97,8 +97,6 @@ control 'check-identity-02' do
   end
 end
 
-puts os.params
-
 control 'check-identity-03' do
   title 'Keystone API should support TLS.'
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-03-is-tls-enabled-for-identity'
