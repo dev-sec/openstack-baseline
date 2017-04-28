@@ -1,7 +1,8 @@
 name        : openstack-baseline
 title       : DevSec OpenStack Security Benchmark
-maintainer  : JJ Asghar, Travis Truman
-copyright   : JJ Asghar, Christoph Hartmann, Travis Truman
+maintainer  : DevSec Hardening Framework Team
+copyright   : DevSec Hardening Framework Team
+copyright_email: hello@dev-sec.io
 license     : Apache 2.0 License
 summary     : Verifies the guidelines of OpenStack Security Guide
 description :
