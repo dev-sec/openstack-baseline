@@ -3,9 +3,8 @@ title       : DevSec OpenStack Security Benchmark
 maintainer  : DevSec Hardening Framework Team
 copyright   : DevSec Hardening Framework Team
 copyright_email: hello@dev-sec.io
-license     : Apache 2.0 License
+license     : Apache-2.0
 summary     : Verifies the guidelines of OpenStack Security Guide
-description :
 version     : 0.3.0
 supports    :
  - os-family: linux
