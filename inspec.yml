@@ -1,10 +1,11 @@
-name        : openstack-baseline
-title       : DevSec OpenStack Security Benchmark
-maintainer  : DevSec Hardening Framework Team
-copyright   : DevSec Hardening Framework Team
+---
+name: openstack-baseline
+title: DevSec OpenStack Security Benchmark
+maintainer: DevSec Hardening Framework Team
+copyright: DevSec Hardening Framework Team
 copyright_email: hello@dev-sec.io
-license     : Apache-2.0
-summary     : Verifies the guidelines of OpenStack Security Guide
-version     : 0.3.0
-supports    :
- - os-family: linux
+license: Apache-2.0
+summary: Verifies the guidelines of OpenStack Security Guide
+version: 1.0.1
+supports:
+    - os-family: linux
