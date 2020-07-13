@@ -93,6 +93,16 @@ bundle exec inspec exec . \
     check-image-03 check-image-04
 ```
 
+### Messaging controls
+
+```shell
+bundle exec inspec exec . \
+  --controls check-messaging-01 check-messaging-02 \
+  check-messaging-03 check-messaging-04 \
+  check-messaging-05 check-messaging-06 \
+  check-messaging-07
+```
+
 ### Orchestration controls
 ```shell
 bundle exec inspec exec . \
