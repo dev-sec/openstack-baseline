@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.2](https://github.com/dev-sec/openstack-baseline/tree/1.0.2) (2020-07-23)
+
+[Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.1...1.0.2)
+
+**Merged pull requests:**
+
+- The release draft references the correct SHA [\#24](https://github.com/dev-sec/openstack-baseline/pull/24) ([micheelengronne](https://github.com/micheelengronne))
+
+## [1.0.1](https://github.com/dev-sec/openstack-baseline/tree/1.0.1) (2020-06-18)
+
+[Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.0...1.0.1)
+
 ## [1.0.0](https://github.com/dev-sec/openstack-baseline/tree/1.0.0) (2020-06-18)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/0f1838390f4d01832fde46cbe9cb91eb6bb7e009...1.0.0)
