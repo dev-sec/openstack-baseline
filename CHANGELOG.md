@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2021-01-26)
+
+[Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.2...1.0.3)
+
+**Merged pull requests:**
+
+- GitHub action [\#25](https://github.com/dev-sec/openstack-baseline/pull/25) ([rndmh3ro](https://github.com/rndmh3ro))
+
 ## [1.0.2](https://github.com/dev-sec/openstack-baseline/tree/1.0.2) (2020-07-23)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.1...1.0.2)
