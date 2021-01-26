@@ -1,17 +1,19 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 # All checks here are not (yet) in the OpenStack Security Guide
 # They are inspired by those at http://docs.openstack.org/security-guide/block-storage/checklist.html
 
 conf_dir = '/etc/ceilometer'
 
-default_config_files = %w(
+default_config_files = %w[
   api_paste.ini
   event_pipeline.yaml
   policy.json
   ceilometer.conf
   event_definitions.yaml
   pipeline.yaml
-)
+]
 
 config_files = attribute(
   'ceilometer_config_files',
@@ -54,7 +56,7 @@ control 'check-telemetry-03' do
 
   # nil is acceptable as keystone is default value
   describe ini("#{conf_dir}/ceilometer.conf") do
-    its(['DEFAULT', 'auth_strategy']) { should be_nil.or eq 'keystone' }
+    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -63,8 +65,8 @@ control 'check-telemetry-04' do
   only_if { ceilometer_enabled }
 
   describe ini("#{conf_dir}/ceilometer.conf") do
-    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
+    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
+    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
   end
 end

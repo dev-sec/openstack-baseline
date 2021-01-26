@@ -1,4 +1,6 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 # All checks from http://docs.openstack.org/security-guide/identity/checklist.html
 
 keystone_conf_dir = '/etc/keystone'
@@ -103,6 +105,7 @@ control 'check-identity-03' do
   [5000, 35357].each do |port|
     # TODO: workaround until https://github.com/chef/inspec/issues/1205 is fixed
     next if os.name.nil? # detect mock backend during inspec check
+
     describe ssl(port: port) do
       it { should be_enabled }
     end
@@ -117,11 +120,11 @@ control 'check-identity-04' do
   keystone_conf = ini(keystone_conf_file)
 
   only_if do
-    keystone_conf.value(['token', 'provider']) == 'pki'
+    keystone_conf.value(%w[token provider]) == 'pki'
   end
 
   describe ini(keystone_conf_file) do
-    its(['token', 'hash_algorithm']) { should eq('sha256').or eq('sha384').or eq('sha512') }
+    its(%w[token hash_algorithm]) { should eq('sha256').or eq('sha384').or eq('sha512') }
   end
 end
 
@@ -130,7 +133,7 @@ control 'check-identity-05' do
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-05-is-max-request-body-size-set-to-default-114688'
 
   describe ini(keystone_conf_file) do
-    its(['oslo_middleware', 'max_request_body_size']) { should be_nil.or be >= 114688 }
+    its(%w[oslo_middleware max_request_body_size]) { should be_nil.or be >= 114688 }
   end
 end
 
@@ -139,7 +142,7 @@ control 'check-identity-06' do
   ref 'http://docs.openstack.org/security-guide/identity/checklist.html#check-identity-06-disable-admin-token-in-etc-keystone-keystone-conf'
 
   describe ini(keystone_conf_file) do
-    its(['DEFAULT', 'admin_token']) { should be_nil.or eq('None') }
+    its(%w[DEFAULT admin_token]) { should be_nil.or eq('None') }
   end
   describe ini("#{keystone_conf_dir}/keystone-paste.ini") do
     its(['pipeline:public_api', 'pipeline']) { should_not include('admin_token_auth') }

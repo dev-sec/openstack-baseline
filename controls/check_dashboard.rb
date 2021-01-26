@@ -1,4 +1,6 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 # All checks from http://docs.openstack.org/security-guide/dashboard/checklist.html
 
 horizon_config_dir = attribute(

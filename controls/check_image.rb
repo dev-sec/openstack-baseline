@@ -1,10 +1,12 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 # All checks here are not (yet) in the OpenStack Security Guide
 # They are inspired by those at http://docs.openstack.org/security-guide/block-storage/checklist.html
 
 glance_conf_dir = '/etc/glance'
 
-default_config_files = %w(
+default_config_files = %w[
   glance-api-paste.ini
   glance-api.conf
   glance-cache.conf
@@ -16,7 +18,7 @@ default_config_files = %w(
   policy.json
   schema-image.json
   schema.json
-)
+]
 
 config_files = attribute(
   'glance_config_files',
@@ -48,10 +50,10 @@ control 'check-image-03' do
 
   # nil is acceptable as keystone is default value
   describe ini("#{glance_conf_dir}/glance-api.conf") do
-    its(['DEFAULT', 'auth_strategy']) { should be_nil.or eq 'keystone' }
+    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
   end
   describe ini("#{glance_conf_dir}/glance-registry.conf") do
-    its(['DEFAULT', 'auth_strategy']) { should be_nil.or eq 'keystone' }
+    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -59,14 +61,14 @@ control 'check-image-04' do
   title 'Glance should communicate with Keystone using TLS.'
 
   describe ini("#{glance_conf_dir}/glance-api.conf") do
-    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
+    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
+    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
   end
 
   describe ini("#{glance_conf_dir}/glance-registry.conf") do
-    its(['keystone_authtoken', 'auth_uri']) { should match(/^https:/) }
+    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(['keystone_authtoken', 'insecure']) { should be_nil.or eq 'False' }
+    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
   end
 end

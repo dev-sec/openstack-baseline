@@ -1,4 +1,6 @@
 # encoding: utf-8
+# frozen_string_literal: true
+
 # apache conf checks
 # taken from http://docs.openstack.org/security-guide/secure-communication/tls-proxies-and-http-services.html
 

@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 # check-shared-01
 describe file('/etc/manila/manila.conf') do
