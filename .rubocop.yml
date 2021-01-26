@@ -2,16 +2,17 @@
 AllCops:
   Exclude:
   - vendor/**/*
-  TargetRubyVersion: 1.9
 Documentation:
   Enabled: false
-AlignParameters:
+Layout/ParameterAlignment:
   Enabled: true
 HashSyntax:
   Enabled: true
 LineLength:
   Enabled: false
 EmptyLinesAroundBlockBody:
+  Enabled: false
+Style/Encoding:
   Enabled: false
 MethodLength:
   Max: 40
@@ -25,7 +26,3 @@ Metrics/PerceivedComplexity:
   Max: 10
 Metrics/AbcSize:
   Max: 30
-Style/FileName:
-  Enabled: false
-Style/WordArray:
-  Enabled: false
