@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 swift_config_owner = attribute(
   'swift_config_owner',
