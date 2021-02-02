@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2021-01-28)
+## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2021-02-02)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.2...1.0.3)
 
 **Merged pull requests:**
 
+- use version tag for changelog action [\#27](https://github.com/dev-sec/openstack-baseline/pull/27) ([schurzi](https://github.com/schurzi))
 - Fix lint [\#26](https://github.com/dev-sec/openstack-baseline/pull/26) ([schurzi](https://github.com/schurzi))
 - GitHub action [\#25](https://github.com/dev-sec/openstack-baseline/pull/25) ([rndmh3ro](https://github.com/rndmh3ro))
 
