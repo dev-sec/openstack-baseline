@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- fix rubocop error for Rakefile [\#29](https://github.com/dev-sec/openstack-baseline/pull/29) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#28](https://github.com/dev-sec/openstack-baseline/pull/28) ([schurzi](https://github.com/schurzi))
 - use version tag for changelog action [\#27](https://github.com/dev-sec/openstack-baseline/pull/27) ([schurzi](https://github.com/schurzi))
 - Fix lint [\#26](https://github.com/dev-sec/openstack-baseline/pull/26) ([schurzi](https://github.com/schurzi))
