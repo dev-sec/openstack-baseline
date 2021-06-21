@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks here are not (yet) in the OpenStack Security Guide
@@ -6,24 +5,24 @@
 
 conf_dir = '/etc/ceilometer'
 
-default_config_files = %w[
+default_config_files = %w(
   api_paste.ini
   event_pipeline.yaml
   policy.json
   ceilometer.conf
   event_definitions.yaml
   pipeline.yaml
-]
+)
 
-config_files = attribute(
+config_files = input(
   'ceilometer_config_files',
-  default: default_config_files,
+  value: default_config_files,
   description: 'OpenStack Ceilometer configuration files'
 )
 
-ceilometer_enabled = attribute(
+ceilometer_enabled = input(
   'ceilometer_enabled',
-  default: false,
+  value: false,
   description: 'OpenStack Inspec checks for Ceilometer should be enabled'
 )
 
@@ -56,7 +55,7 @@ control 'check-telemetry-03' do
 
   # nil is acceptable as keystone is default value
   describe ini("#{conf_dir}/ceilometer.conf") do
-    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
+    its(%w(DEFAULT auth_strategy)) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -65,8 +64,8 @@ control 'check-telemetry-04' do
   only_if { ceilometer_enabled }
 
   describe ini("#{conf_dir}/ceilometer.conf") do
-    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
+    its(%w(keystone_authtoken auth_uri)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
+    its(%w(keystone_authtoken insecure)) { should be_nil.or eq 'False' }
   end
 end

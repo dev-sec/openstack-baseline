@@ -1,23 +1,22 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks from http://docs.openstack.org/security-guide/dashboard/checklist.html
 
-horizon_config_dir = attribute(
+horizon_config_dir = input(
   'horizon_config_dir',
-  default: '/etc/openstack-dashboard',
+  value: '/etc/openstack-dashboard',
   description: 'OpenStack Dashboard config file path'
 )
 
-horizon_config_owner = attribute(
+horizon_config_owner = input(
   'horizon_config_owner',
-  default: 'root',
+  value: 'root',
   description: 'OpenStack Dashboard config file owner'
 )
 
-horizon_config_group = attribute(
+horizon_config_group = input(
   'horizon_config_group',
-  default: 'horizon',
+  value: 'horizon',
   description: 'OpenStack Dashboard config file group'
 )
 

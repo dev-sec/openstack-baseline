@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks here are not (yet) in the OpenStack Security Guide
@@ -6,22 +5,22 @@
 
 heat_conf_dir = '/etc/heat'
 
-default_config_files = %w[
+default_config_files = %w(
   api-paste.ini
   heat.conf
   policy.json
   heat_api_audit_map.conf
-]
+)
 
-config_files = attribute(
+config_files = input(
   'heat_config_files',
-  default: default_config_files,
+  value: default_config_files,
   description: 'OpenStack Heat configuration files'
 )
 
-heat_enabled = attribute(
+heat_enabled = input(
   'heat_enabled',
-  default: false,
+  value: false,
   description: 'OpenStack Inspec checks for Heat should be enabled'
 )
 
@@ -53,8 +52,8 @@ control 'check-orchestration-03' do
   only_if { heat_enabled }
 
   describe ini("#{heat_conf_dir}/heat.conf") do
-    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
+    its(%w(keystone_authtoken auth_uri)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
+    its(%w(keystone_authtoken insecure)) { should be_nil.or eq 'False' }
   end
 end

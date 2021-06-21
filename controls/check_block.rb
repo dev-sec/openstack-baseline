@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks from http://docs.openstack.org/security-guide/block-storage/checklist.html
@@ -52,7 +51,7 @@ control 'check-block-03' do
 
   # nil is acceptable as keystone is default value
   describe ini(cinder_conf_file) do
-    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
+    its(%w(DEFAULT auth_strategy)) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -61,9 +60,9 @@ control 'check-block-04' do
   ref 'http://docs.openstack.org/security-guide/block-storage/checklist.html#check-block-04-is-tls-enabled-for-authentication'
 
   describe ini(cinder_conf_file) do
-    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
+    its(%w(keystone_authtoken auth_uri)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
+    its(%w(keystone_authtoken insecure)) { should be_nil.or eq 'False' }
   end
 end
 
@@ -73,7 +72,7 @@ control 'check-block-05' do
 
   # nil is acceptable as false is the default value
   describe ini(cinder_conf_file) do
-    its(%w[DEFAULT nova_api_insecure]) { should be_nil.or eq 'False' }
+    its(%w(DEFAULT nova_api_insecure)) { should be_nil.or eq 'False' }
   end
 end
 
@@ -83,9 +82,9 @@ control 'check-block-06' do
 
   describe ini(cinder_conf_file) do
     # nil is acceptable as the glance endpoint may be sourced from Keystone based on the value of glance_catalog_info
-    its(%w[DEFAULT glance_api_servers]) { should be_nil.or match(/^https:/) }
+    its(%w(DEFAULT glance_api_servers)) { should be_nil.or match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[DEFAULT glance_api_insecure]) { should be_nil.or eq 'False' }
+    its(%w(DEFAULT glance_api_insecure)) { should be_nil.or eq 'False' }
   end
 end
 
@@ -96,25 +95,24 @@ control 'check-block-07' do
   cinder_conf = ini(cinder_conf_file)
 
   only_if do
-    cinder_conf.value(%w[DEFAULT nas_host]).nil?
+    cinder_conf.value(%w(DEFAULT nas_host)).nil?
   end
 
   describe ini(cinder_conf_file) do
     # nil is acceptable as auto is the default value
-    its(%w[DEFAULT nas_secure_file_permissions]) { should be_nil.or eq('True').or eq('auto') }
+    its(%w(DEFAULT nas_secure_file_permissions)) { should be_nil.or eq('True').or eq('auto') }
     # nil is acceptable as auto is the default value
-    its(%w[DEFAULT nas_secure_file_operations]) { should be_nil.or eq('True').or eq('auto') }
+    its(%w(DEFAULT nas_secure_file_operations)) { should be_nil.or eq('True').or eq('auto') }
   end
 end
 
 control 'check-block-08' do
-
   title 'Max request body size should be set to avoid denial of service attacks.'
 
   ref 'http://docs.openstack.org/security-guide/block-storage/checklist.html#check-block-08-is-max-size-for-the-body-of-a-request-set-to-default-114688'
 
   describe ini(cinder_conf_file) do
     # nil is acceptable as 114688 is the default value
-    its(%w[DEFAULT osapi_max_request_body_size]) { should be_nil.or be >= 114688 }
+    its(%w(DEFAULT osapi_max_request_body_size)) { should be_nil.or be >= 114688 }
   end
 end

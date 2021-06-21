@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks from http://docs.openstack.org/security-guide/networking/checklist.html
@@ -52,7 +51,7 @@ control 'check-neutron-03' do
 
   describe ini(neutron_conf_file) do
     # nil is acceptable as "keystone" is the default value
-    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
+    its(%w(DEFAULT auth_strategy)) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -61,9 +60,9 @@ control 'check-neutron-04' do
   ref 'http://docs.openstack.org/security-guide/networking/checklist.html#check-neutron-04-is-secure-protocol-used-for-authentication'
 
   describe ini(neutron_conf_file) do
-    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
+    its(%w(keystone_authtoken auth_uri)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
+    its(%w(keystone_authtoken insecure)) { should be_nil.or eq 'False' }
   end
 end
 
