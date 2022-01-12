@@ -1,11 +1,12 @@
 # Changelog
 
-## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2021-04-24)
+## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2022-01-12)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.2...1.0.3)
 
 **Merged pull requests:**
 
+- use input instead of attribute [\#31](https://github.com/dev-sec/openstack-baseline/pull/31) ([micheelengronne](https://github.com/micheelengronne))
 - fix rubocop error for Rakefile [\#29](https://github.com/dev-sec/openstack-baseline/pull/29) ([schurzi](https://github.com/schurzi))
 - add dependency to chef-config for CI [\#28](https://github.com/dev-sec/openstack-baseline/pull/28) ([schurzi](https://github.com/schurzi))
 - use version tag for changelog action [\#27](https://github.com/dev-sec/openstack-baseline/pull/27) ([schurzi](https://github.com/schurzi))
