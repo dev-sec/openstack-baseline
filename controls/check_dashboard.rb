@@ -3,19 +3,19 @@
 
 # All checks from http://docs.openstack.org/security-guide/dashboard/checklist.html
 
-horizon_config_dir = attribute(
+horizon_config_dir = input(
   'horizon_config_dir',
   default: '/etc/openstack-dashboard',
   description: 'OpenStack Dashboard config file path'
 )
 
-horizon_config_owner = attribute(
+horizon_config_owner = input(
   'horizon_config_owner',
   default: 'root',
   description: 'OpenStack Dashboard config file owner'
 )
 
-horizon_config_group = attribute(
+horizon_config_group = input(
   'horizon_config_group',
   default: 'horizon',
   description: 'OpenStack Dashboard config file group'
