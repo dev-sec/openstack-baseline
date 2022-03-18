@@ -1,4 +1,3 @@
-# encoding: utf-8
 # frozen_string_literal: true
 
 # All checks from http://docs.openstack.org/security-guide/compute/checklist.html
@@ -52,7 +51,7 @@ control 'check-compute-03' do
 
   describe ini(nova_conf_file) do
     # nil is acceptable as "keystone" is the default value
-    its(%w[DEFAULT auth_strategy]) { should be_nil.or eq 'keystone' }
+    its(%w(DEFAULT auth_strategy)) { should be_nil.or eq 'keystone' }
   end
 end
 
@@ -61,9 +60,9 @@ control 'check-compute-04' do
   ref 'http://docs.openstack.org/security-guide/compute/checklist.html#check-compute-04-is-secure-protocol-used-for-authentication'
 
   describe ini(nova_conf_file) do
-    its(%w[keystone_authtoken auth_uri]) { should match(/^https:/) }
+    its(%w(keystone_authtoken auth_uri)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[keystone_authtoken insecure]) { should be_nil.or eq 'False' }
+    its(%w(keystone_authtoken insecure)) { should be_nil.or eq 'False' }
   end
 end
 
@@ -72,8 +71,8 @@ control 'check-compute-05' do
   ref 'http://docs.openstack.org/security-guide/compute/checklist.html#check-compute-05-does-nova-communicate-with-glance-securely'
 
   describe ini(nova_conf_file) do
-    its(%w[glance api_servers]) { should match(/^https:/) }
+    its(%w(glance api_servers)) { should match(/^https:/) }
     # nil is acceptable as false is the default value
-    its(%w[glance api_insecure]) { should be_nil.or eq 'False' }
+    its(%w(glance api_insecure)) { should be_nil.or eq 'False' }
   end
 end
