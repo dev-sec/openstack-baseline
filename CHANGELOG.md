@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2022-03-18)
+## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2022-09-29)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.3...1.0.4)
 
