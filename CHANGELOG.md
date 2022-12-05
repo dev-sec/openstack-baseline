@@ -1,8 +1,12 @@
 # Changelog
 
-## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2022-09-29)
+## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2022-12-05)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.3...1.0.4)
+
+**Implemented enhancements:**
+
+- use centralised issue templates and workflows [\#33](https://github.com/dev-sec/openstack-baseline/pull/33) ([schurzi](https://github.com/schurzi))
 
 **Merged pull requests:**
 
