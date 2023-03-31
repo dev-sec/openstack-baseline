@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2022-12-05)
+## [1.0.4](https://github.com/dev-sec/openstack-baseline/tree/1.0.4) (2023-03-31)
 
 [Full Changelog](https://github.com/dev-sec/openstack-baseline/compare/1.0.3...1.0.4)
 
@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Configure Renovate [\#34](https://github.com/dev-sec/openstack-baseline/pull/34) ([renovate[bot]](https://github.com/apps/renovate))
 - Change linting to Cookstyle [\#32](https://github.com/dev-sec/openstack-baseline/pull/32) ([schurzi](https://github.com/schurzi))
 
 ## [1.0.3](https://github.com/dev-sec/openstack-baseline/tree/1.0.3) (2022-01-12)
